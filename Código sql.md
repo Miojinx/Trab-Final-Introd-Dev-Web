@@ -1,7 +1,5 @@
 # Código sql
 
-Revisado: No
-
 ```sql
 use trabintrodevweb;
 create table Categorias (
