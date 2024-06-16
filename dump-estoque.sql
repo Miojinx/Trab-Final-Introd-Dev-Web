@@ -18,7 +18,8 @@
 --
 -- Table structure for table `categorias`
 --
-
+create database estoque;
+use estoque;
 DROP TABLE IF EXISTS `categorias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
