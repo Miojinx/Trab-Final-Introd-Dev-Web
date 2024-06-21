@@ -57,6 +57,8 @@
                             <input type="text" name="cidade" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=cliente.getCidade()%>" class="form-control">
                             <label for="uf" class="form-label" >UF</label>
                             <input type="text" name="uf" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=cliente.getUf()%>" class="form-control">
+                            <label for="cep" class="form-label" >CEP</label>
+                            <input type="text" name="cep" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=cliente.getCep()%>" class="form-control">
                             <label for="telefone" class="form-label" >Telefone</label>
                             <input type="text" name="telefone" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=cliente.getTelefone()%>" class="form-control">
                             <label for="email" class="form-label" >Email</label>
