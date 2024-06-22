@@ -13,6 +13,10 @@ public class Compras {
     private int id_produto;
     private int id_comprador;
 
+    public Compras() {
+        
+    }
+    
     public Compras(int id, int quantidade_compra, Date data_compra, float valor_compra, int id_fornecedor, int id_produto, int id_comprador) {
         this.id = id;
         this.quantidade_compra = quantidade_compra;
