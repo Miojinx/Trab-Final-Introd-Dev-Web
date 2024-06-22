@@ -15,6 +15,10 @@ public class Vendas {
     private int id_produto;
     private int id_vendedor;
     
+    public Vendas() {
+        
+    }
+    
     public Vendas(int id, int quantidade_venda, Date data_venda, float valor_venda, int id_cliente, int id_produto, int id_vendedor) {
         this.id = id;
         this.quantidade_venda = quantidade_venda;

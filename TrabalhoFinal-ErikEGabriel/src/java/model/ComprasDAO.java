@@ -12,7 +12,7 @@ public class ComprasDAO implements Dao<Compras> {
     @Override
     public Compras get(int id) {
         Conexao conexao = new Conexao();
-        Compras funcionario = new Compras();
+        Compras compras = new Compras();
         try {
             PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Compras WHERE ID = ? ");
             sql.setInt(1, id);
@@ -20,13 +20,13 @@ public class ComprasDAO implements Dao<Compras> {
 
             if (resultado != null) {
                 while (resultado.next()) {
-                    funcionario.setId(Integer.parseInt(resultado.getString("ID")));
-                    funcionario.setQuantidade_compra(resultado.getInt("QUANTIDADE_COMPRA_COMPRAS"));
-                    funcionario.setData_compra(resultado.getDate("DATA_COMPRA_COMPRAS"));
-                    funcionario.setValor_compra(resultado.getFloat("VALOR_COMPRA_COMPRAS"));
-                    funcionario.setId_fornecedor(resultado.getInt("ID_FORNECEDOR_COMPRAS"));
-                    funcionario.setId_produto(resultado.getInt("ID_PRODUTO_COMPRAS"));
-                    funcionario.setId_comprador(resultado.getInt("ID_COMPRADOR_COMPRAS"));
+                    compras.setId(Integer.parseInt(resultado.getString("ID")));
+                    compras.setQuantidade_compra(resultado.getInt("QUANTIDADE_COMPRA_COMPRAS"));
+                    compras.setData_compra(resultado.getDate("DATA_COMPRA_COMPRAS"));
+                    compras.setValor_compra(resultado.getFloat("VALOR_COMPRA_COMPRAS"));
+                    compras.setId_fornecedor(resultado.getInt("ID_FORNECEDOR_COMPRAS"));
+                    compras.setId_produto(resultado.getInt("ID_PRODUTO_COMPRAS"));
+                    compras.setId_comprador(resultado.getInt("ID_COMPRADOR_COMPRAS"));
                 }
             }
         } catch (SQLException e) {
@@ -34,7 +34,7 @@ public class ComprasDAO implements Dao<Compras> {
         } finally {
             conexao.closeConexao();
         }
-        return funcionario;
+        return compras;
     }
     
     @Override
