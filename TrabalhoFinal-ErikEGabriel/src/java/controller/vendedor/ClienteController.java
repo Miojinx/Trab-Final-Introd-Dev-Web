@@ -122,7 +122,7 @@ public class ClienteController extends HttpServlet {
                         break;
                 }
 
-                request.setAttribute("link", "/aplicacaoMVC/vendedor/ClienteController?acao=Listar");
+                request.setAttribute("link", "/TrabalhoFinal-ErikEGabriel/vendedor/ClienteController?acao=Listar");
                 rd = request.getRequestDispatcher("/views/comum/showMessage.jsp"); //lembrar de alterar mais tarde
                 rd.forward(request, response);
 

@@ -42,7 +42,7 @@
                     </div>
                     <% }%>
 
-                    <form action="/aplicacaoMVC/comprador/CategoriaController" method="POST">
+                    <form action="/TrabalhoFinal-ErikEGabriel/comprador/CategoriaController" method="POST">
                         <input type="hidden" name="id" value="<%=categoria.getId()%>" class="form-control">
                         <div class="mb-3">
                             <label for="nomeCategoria" class="form-label" >Nome da Categoria</label>
@@ -50,7 +50,7 @@
                         </div>
                         <div>
                             <input type="submit" name="btEnviar" value="<%=acao%>" class="btn btn-primary">
-                            <a href="/aplicacaoMVC/comprador/CategoriaController?acao=Listar" class="btn btn-danger">Retornar</a>
+                            <a href="/TrabalhoFinal-ErikEGabriel/comprador/CategoriaController?acao=Listar" class="btn btn-danger">Retornar</a>
                         </div>
                     </form>
 

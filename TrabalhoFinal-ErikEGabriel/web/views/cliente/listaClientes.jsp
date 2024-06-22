@@ -20,7 +20,7 @@
 
                 <h2>Lista de Clientes</h2>
 
-                <a href="/aplicacaoMVC/vendedor/ClienteController?acao=Incluir" class="mb-2 btn btn-primary">Incluir</a>
+                <a href="/TrabalhoFinal-ErikEGabriel/vendedor/ClienteController?acao=Incluir" class="mb-2 btn btn-primary">Incluir</a>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -53,8 +53,8 @@
                                     out.println("<td>" + cliente.getEmail()+ "</td>");
                                     %>
                             <td>
-                            <a href="/aplicacaoMVC/vendedor/ClienteController?acao=Alterar&id=<%=cliente.getId()%>" class="btn btn-warning">Alterar</a>
-                            <a href="/aplicacaoMVC/vendedor/ClienteController?acao=Excluir&id=<%=cliente.getId()%>" class="btn btn-danger">Excluir</a></td>
+                            <a href="/TrabalhoFinal-ErikEGabriel/vendedor/ClienteController?acao=Alterar&id=<%=cliente.getId()%>" class="btn btn-warning">Alterar</a>
+                            <a href="/TrabalhoFinal-ErikEGabriel/vendedor/ClienteController?acao=Excluir&id=<%=cliente.getId()%>" class="btn btn-danger">Excluir</a></td>
                             
                             <%   out.println("</tr>");
                                 }

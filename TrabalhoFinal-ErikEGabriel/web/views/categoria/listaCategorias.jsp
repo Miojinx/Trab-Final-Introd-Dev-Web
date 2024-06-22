@@ -20,7 +20,7 @@
 
                 <h2>Lista de Categorias</h2>
 
-                <a href="/aplicacaoMVC/comprador/CategoriaController?acao=Incluir" class="mb-2 btn btn-primary">Incluir</a>
+                <a href="/TrabalhoFinal-ErikEGabriel/comprador/CategoriaController?acao=Incluir" class="mb-2 btn btn-primary">Incluir</a>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -40,8 +40,8 @@
                                     out.println("<td>" + categoria.getNome_categoria()+ "</td>");
                                     %>
                             <td>
-                            <a href="/aplicacaoMVC/comprador/CategoriaController?acao=Alterar&id=<%=categoria.getId()%>" class="btn btn-warning">Alterar</a>
-                            <a href="/aplicacaoMVC/comprador/CategoriaController?acao=Excluir&id=<%=categoria.getId()%>" class="btn btn-danger">Excluir</a></td>
+                            <a href="/TrabalhoFinal-ErikEGabriel/comprador/CategoriaController?acao=Alterar&id=<%=categoria.getId()%>" class="btn btn-warning">Alterar</a>
+                            <a href="/TrabalhoFinal-ErikEGabriel/comprador/CategoriaController?acao=Excluir&id=<%=categoria.getId()%>" class="btn btn-danger">Excluir</a></td>
                             
                             <%   out.println("</tr>");
                                 }

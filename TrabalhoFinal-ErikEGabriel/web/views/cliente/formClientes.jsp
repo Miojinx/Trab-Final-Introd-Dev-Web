@@ -42,7 +42,7 @@
                     </div>
                     <% }%>
 
-                    <form action="/aplicacaoMVC/vendedor/ClienteController" method="POST">
+                    <form action="/TrabalhoFinal-ErikEGabriel/vendedor/ClienteController" method="POST">
                         <input type="hidden" name="id" value="<%=cliente.getId()%>" class="form-control">
                         <div class="mb-3">
                             <label for="nome" class="form-label" >Nome</label>
@@ -66,7 +66,7 @@
                         </div>
                         <div>
                             <input type="submit" name="btEnviar" value="<%=acao%>" class="btn btn-primary">
-                            <a href="/aplicacaoMVC/vendedor/ClienteController?acao=Listar" class="btn btn-danger">Retornar</a>
+                            <a href="/TrabalhoFinal-ErikEGabriel/vendedor/ClienteController?acao=Listar" class="btn btn-danger">Retornar</a>
                         </div>
                     </form>
 

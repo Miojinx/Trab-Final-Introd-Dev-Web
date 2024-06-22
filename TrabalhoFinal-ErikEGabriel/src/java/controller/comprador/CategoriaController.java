@@ -113,7 +113,7 @@ public class CategoriaController extends HttpServlet {
                         break;
                 }
 
-                request.setAttribute("link", "/aplicacaoMVC/comprador/CategoriaController?acao=Listar");
+                request.setAttribute("link", "/TrabalhoFinal-ErikEGabriel/comprador/CategoriaController?acao=Listar");
                 rd = request.getRequestDispatcher("/views/comum/showMessage.jsp");
                 rd.forward(request, response);
 
