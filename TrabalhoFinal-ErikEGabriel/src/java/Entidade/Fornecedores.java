@@ -15,7 +15,11 @@ public class Fornecedores {
     private String cep;
     private String telefone;
     private String email;
-
+    
+    public Fornecedores() {
+        
+    }
+    
     public Fornecedores(int id, String razao_social, String cnpj, String endereco, String bairro, String cidade, String uf, String cep, String telefone, String email) {
         this.id = id;
         this.razao_social = razao_social;
