@@ -77,7 +77,7 @@ public class ClienteController extends HttpServlet {
 
         RequestDispatcher rd;
 
-        if (nome.isEmpty() || cpf.isEmpty() || endereco.isEmpty() || bairro.isEmpty() || cidade.isEmpty() || uf.isEmpty() || cep.isEmpty() || telefone.isEmpty() || email.isEmpty()) {
+        if (nome.isEmpty() && cpf.isEmpty() && endereco.isEmpty() && bairro.isEmpty() && cidade.isEmpty() && uf.isEmpty() && cep.isEmpty() && telefone.isEmpty() && email.isEmpty()) {
             Clientes cliente = new Clientes();
             switch (btEnviar) {
                 case "Alterar":
