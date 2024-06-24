@@ -9,13 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.CategoriaDAO;
 import model.ProdutosDAO;
 /**
  *
  * @author erikt
  */
-@WebServlet(name = "ProdutoController", urlPatterns = {"/admin/ProdutoController"})
+@WebServlet(name = "ProdutoController", urlPatterns = {"/comprador/ProdutoController"})
 public class ProdutoController extends HttpServlet {
 
     @Override

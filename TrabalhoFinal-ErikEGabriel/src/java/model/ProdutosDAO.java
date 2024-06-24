@@ -116,7 +116,7 @@ public class ProdutosDAO implements Dao<Produtos> {
         ArrayList<Produtos> listaProdutos = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * from produtos p inner join categorias c on p.id_categoria = c.id";
+            String selectSQL = "SELECT * from estoque.produtos";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
