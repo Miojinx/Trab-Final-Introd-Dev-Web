@@ -20,6 +20,12 @@ public class Funcionario {
         this.senha = senha;
         this.papel = papel;
     }
+    
+     public Funcionario(String cpf, String senha) {
+        this.cpf = cpf;
+        this.senha = senha;
+    }
+    
     public int getId() {
         return id;
     }
