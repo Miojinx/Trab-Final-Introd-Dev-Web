@@ -39,7 +39,7 @@ public class ProdutosDAO implements Dao<Produtos> {
                     produto.setDescricao(resultado.getString("DESCRICAO"));
                     produto.setPreco_compra(Float.parseFloat(resultado.getString("PRECO_COMPRA")));
                     produto.setPreco_venda(Float.parseFloat(resultado.getString("PRECO_VENDA")));
-                    produto.setQuantidade_disponivel(Integer.parseInt(resultado.getString("QUANTIDADE_DISPONIVEL")));
+                    produto.setQuantidade_disponivel(Integer.parseInt(resultado.getString("QUANTIDADE_DISPONÍVEL")));
                     produto.setLiberado_venda(resultado.getString("LIBERADO_VENDA").charAt(0));
                     produto.setId_categoria(Integer.parseInt(resultado.getString("ID_CATEGORIA")));
                 }
@@ -57,7 +57,7 @@ public class ProdutosDAO implements Dao<Produtos> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO produtos (nome_produto, descricao, preco_compra, preco_venda, quantidade_disponivel, liberado_venda, id_categoria) VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO produtos (nome_produto, descricao, preco_compra, preco_venda, quantidade_disponível, liberado_venda, id_categoria) VALUES (?,?,?,?,?,?,?)");
             sql.setString(1, t.getNome_produto());
             sql.setString(2, t.getDescricao());
             sql.setFloat(3, t.getPreco_compra());
@@ -78,7 +78,7 @@ public class ProdutosDAO implements Dao<Produtos> {
     public void update(Produtos t) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE produtos SET nome_produto = ?, descricao = ?, preco_compra = ?, preco_venda = ?, quantidade_disponivel = ?, liberado_venda = ?, id_categoria = ? WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE produtos SET nome_produto = ?, descricao = ?, preco_compra = ?, preco_venda = ?, quantidade_disponível = ?, liberado_venda = ?, id_categoria = ? WHERE ID = ? ");
             sql.setString(1, t.getNome_produto());
             sql.setString(2, t.getDescricao());
             sql.setFloat(3, t.getPreco_compra());
@@ -126,9 +126,9 @@ public class ProdutosDAO implements Dao<Produtos> {
                             resultado.getInt("ID"),
                             resultado.getString("NOME_PRODUTO"),
                             resultado.getString("DESCRICAO"),
+                            resultado.getFloat("PRECO_COMPRA"),
                             resultado.getFloat("PRECO_VENDA"),
-                            resultado.getFloat("PRECO_VENDA"),
-                            resultado.getInt("QUANTIDADE_DISPONIVEL"),
+                            resultado.getInt("QUANTIDADE_DISPONÍVEL"),
                             resultado.getString("LIBERADO_VENDA").charAt(0),
                             resultado.getInt("ID_CATEGORIA")
                     );
@@ -136,7 +136,7 @@ public class ProdutosDAO implements Dao<Produtos> {
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Query de select (listaProdutos) incorreta");
+            throw new RuntimeException("Query de select (listaProdutos) incorreta", e);
         } finally {
             conexao.closeConexao();
         }

@@ -21,7 +21,7 @@ public class MostrarProdutosController extends HttpServlet {
                    ProdutosDAO produtosDAO = new ProdutosDAO();
             try {
                 ArrayList<Produtos> listaProdutos = produtosDAO.getAll();
-                request.setAttribute("listaComentarios", listaProdutos);
+                request.setAttribute("listaProdutos", listaProdutos);
                 RequestDispatcher rd = request.getRequestDispatcher("/views/public/mostrarProdutos.jsp");
                 rd.forward(request, response);
                 
