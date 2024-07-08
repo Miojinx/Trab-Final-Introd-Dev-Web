@@ -92,7 +92,7 @@ public class CategoriaDAO implements Dao<Categorias> {
                 while (resultado.next()) {
                     Categorias Categoria = new Categorias(
                             resultado.getInt("ID"),
-                            resultado.getString("nome_categorias")
+                            resultado.getString("nome_categoria")
                     );
                     listaCategorias.add(Categoria);
                 }

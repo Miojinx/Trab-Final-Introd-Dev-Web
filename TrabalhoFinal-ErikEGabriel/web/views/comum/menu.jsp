@@ -18,6 +18,7 @@
                             <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/logOut">Logout</a>
                 <% } else if (funcionarioLogado != null && funcionarioLogado.getPapel() == '1') { %>
                             <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/vendedor/ClienteController?acao=Listar">Clientes</a>
+                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/vendedor/VendasController?acao=Listar">Vendas</a>
                             <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/logOut">Logout</a>
                 <% } else if (funcionarioLogado != null && funcionarioLogado.getPapel() == '2') { %>
                             <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/comprador/CategoriaController?acao=Listar">Categorias</a>

@@ -1,6 +1,6 @@
 package controller.vendedor;
 
-import Entidade.Clientes;
+import Entidade.Vendas;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -10,10 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.ClienteDAO;
+import model.VendasDAO;
+import java.util.Date;
 
-@WebServlet(name = "ClienteController", urlPatterns = {"/vendedor/ClienteController"})
-public class ClienteController extends HttpServlet {
+@WebServlet(name = "VendasController", urlPatterns = {"/vendedor/VendasController"})
+public class VendasController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -21,38 +22,37 @@ public class ClienteController extends HttpServlet {
 
         // get parametro ação indicando o que fazer
         String acao = (String) request.getParameter("acao");
-        Clientes cliente = new Clientes();
-        ClienteDAO clienteDAO = new ClienteDAO();
+        Vendas venda = new Vendas();
+        VendasDAO vendasDAO = new VendasDAO();
         RequestDispatcher rd;
         switch (acao) {
             case "Listar":
-                ArrayList<Clientes> listaClientes = clienteDAO.getAll();
-                request.setAttribute("listaClientes", listaClientes);
+                ArrayList<Vendas> listaVendas = vendasDAO.getAll();
+                request.setAttribute("listaClientes", listaVendas);
 
-                rd = request.getRequestDispatcher("/views/cliente/listaClientes.jsp");
+                rd = request.getRequestDispatcher("/views/venda/listaVendas.jsp");
                 rd.forward(request, response);
 
                 break;
             case "Alterar":
             case "Excluir":
 
-                // get parametro ação indicando sobre qual cliente será a ação
                 int id = Integer.parseInt(request.getParameter("id"));
-                cliente = clienteDAO.get(id);
+                venda = vendasDAO.get(id);
 
-                request.setAttribute("cliente", cliente);
+                request.setAttribute("venda", venda);
                 request.setAttribute("msgError", "");
                 request.setAttribute("acao", acao);
 
-                rd = request.getRequestDispatcher("/views/cliente/formClientes.jsp");
+                rd = request.getRequestDispatcher("/views/venda/formVendas.jsp");
                 rd.forward(request, response);
                 break;
             case "Incluir":
-                request.setAttribute("cliente", cliente);
+                request.setAttribute("venda", venda);
                 request.setAttribute("msgError", "");
                 request.setAttribute("acao", acao);
 
-                rd = request.getRequestDispatcher("/views/cliente/formClientes.jsp");
+                rd = request.getRequestDispatcher("/views/venda/formVendas.jsp");
                 rd.forward(request, response);
         }
 
@@ -63,15 +63,8 @@ public class ClienteController extends HttpServlet {
             throws ServletException, IOException {
 
         int id = Integer.parseInt(request.getParameter("id"));
-        String nome = request.getParameter("nome");
-        String cpf = request.getParameter("cpf");
-        String endereco = request.getParameter("endereco");
-        String bairro = request.getParameter("bairro");
-        String cidade = request.getParameter("cidade");
-        String uf = request.getParameter("uf");
-        String cep = request.getParameter("cep");
-        String telefone = request.getParameter("telefone");
-        String email = request.getParameter("email");
+        int quantidade_venda = Integer.parseInt(request.getParameter("quantidade_venda"));
+        Date data_venda = new request.getParameter("data_venda"); //TEM QUE TERMINAR MAS N TO SABENDO FAZER A CONVERSÃO!!!!!!!!!
         
         String btEnviar = request.getParameter("btEnviar");
 

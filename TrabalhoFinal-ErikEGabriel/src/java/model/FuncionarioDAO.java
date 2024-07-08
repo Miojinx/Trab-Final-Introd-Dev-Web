@@ -20,10 +20,10 @@ public class FuncionarioDAO implements Dao<Funcionario> {
             if (resultado != null) {
                 while (resultado.next()) {
                     funcionario.setId(Integer.parseInt(resultado.getString("ID")));
-                    funcionario.setNome(resultado.getString("NOME_FUNCIONARIO"));
-                    funcionario.setCpf(resultado.getString("CPF_FUNCIONARIO"));
-                    funcionario.setSenha(resultado.getString("SENHA_FUNCIONARIO"));
-                    funcionario.setPapel(resultado.getString("PAPEL_FUNCIONARIO").charAt(0));
+                    funcionario.setNome(resultado.getString("NOME"));
+                    funcionario.setCpf(resultado.getString("CPF"));
+                    funcionario.setSenha(resultado.getString("SENHA"));
+                    funcionario.setPapel(resultado.getString("PAPEL").charAt(0));
                 }
             }
         } catch (SQLException e) {
@@ -39,7 +39,7 @@ public class FuncionarioDAO implements Dao<Funcionario> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO funcionario (nome, cpf, senha, papel) VALUES (?,?,?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO funcionarios (nome, cpf, senha, papel) VALUES (?,?,?,?)");
             sql.setString(1, t.getNome());
             sql.setString(2, t.getCpf());
             sql.setString(3, t.getSenha());
@@ -57,11 +57,12 @@ public class FuncionarioDAO implements Dao<Funcionario> {
     public void update(Funcionario t) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE funcionario SET nome = ?, cpf = ?, senha = ?, papel = ?  WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE funcionarios SET nome = ?, cpf = ?, senha = ?, papel = ?  WHERE ID = ? ");
             sql.setString(1, t.getNome());
             sql.setString(2, t.getCpf());
             sql.setString(3, t.getSenha());
             sql.setString(4, String.valueOf(t.getPapel()));
+            sql.setInt(5, t.getId());
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -75,7 +76,7 @@ public class FuncionarioDAO implements Dao<Funcionario> {
     public void delete(int id) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Funcionario WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM funcionarios WHERE ID = ? ");
             sql.setInt(1, id);
             sql.executeUpdate();
 
@@ -92,7 +93,7 @@ public class FuncionarioDAO implements Dao<Funcionario> {
         ArrayList<Funcionario> listaFuncionarios = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM Funcionario";
+            String selectSQL = "SELECT * FROM Funcionarios";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();

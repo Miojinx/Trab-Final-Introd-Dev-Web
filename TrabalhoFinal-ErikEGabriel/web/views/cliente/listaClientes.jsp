@@ -10,12 +10,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="#">
         <title>Lista Clientes</title>
-         <link href="http://localhost:8080/aplicacaoMVC/views/bootstrap/bootstrap.min.css"  rel="stylesheet">
+         <link href="http://localhost:8080/TrabalhoFinal-ErikEGabriel/views/bootstrap/bootstrap.min.css"  rel="stylesheet">
 
     </head>
     <body>
         <div class="container">
-             <jsp:include page="../../comum/menu.jsp" />
+             <jsp:include page="../comum/menu.jsp" />
             <div class="mt-5">
 
                 <h2>Lista de Clientes</h2>
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <script src="http://localhost:8080/aplicacaoMVC/views/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="http://localhost:8080/TrabalhoFinal-ErikEGabriel/views/bootstrap/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>

@@ -1,18 +1,21 @@
 package Entidade;
 
-/**
- *
- * @author User
- */
 public class Funcionario {
+
     private int id;
     private String nome;
     private String cpf;
     private String senha;
     private char papel;
-    
-    public Funcionario(){}
-    
+
+    public Funcionario() {
+        this.id = 0;
+        this.nome = "";
+        this.cpf = "";
+        this.senha = "";
+        this.papel = ' ';
+    }
+
     public Funcionario(int id, String nome, String cpf, String senha, char papel) {
         this.id = id;
         this.nome = nome;
@@ -20,12 +23,12 @@ public class Funcionario {
         this.senha = senha;
         this.papel = papel;
     }
-    
-     public Funcionario(String cpf, String senha) {
+
+    public Funcionario(String cpf, String senha) {
         this.cpf = cpf;
         this.senha = senha;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -65,5 +68,5 @@ public class Funcionario {
     public void setPapel(char papel) {
         this.papel = papel;
     }
-  
+
 }

@@ -13,7 +13,18 @@ public class Clientes {
     private String telefone;
     private String email;
     
-    public Clientes(){}
+    public Clientes(){
+    this.id=0;
+    this.nome="";
+    this.cpf="";
+    this.endereco="";
+    this.bairro="";
+    this.cidade="";
+    this.uf="";
+    this.cep="";
+    this.telefone="";
+    this.email="";
+    }
 
     public Clientes(int id, String nome, String cpf, String endereco, String bairro, String cidade, String uf, String cep, String telefone, String email) {
         this.id = id;

@@ -15,11 +15,11 @@
     </head>
     <body>
         <div class="container">
-             <jsp:include page="../../comum/menu.jsp" />
+             <jsp:include page="../comum/menu.jsp" />
             <div class="mt-5">
 
                 <h1>Área Restrita</h1>
-                <h2>Lista de Categorias</h2>
+                <h2>Lista de Funcionários</h2>
 
                 <a href="/TrabalhoFinal-ErikEGabriel/admin/FuncionarioController?acao=Incluir" class="mb-2 btn btn-primary">Incluir</a>
                 <div class="table-responsive">
@@ -29,7 +29,6 @@
                                 <th scope="col">Id</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">CPF</th>
-                                <th scope="col">Senha</th>
                                 <th scope="col">Papel</th>
                                 <th scope="col">Ações</th>
                             </tr>
@@ -43,7 +42,6 @@
                                     out.println("<th>" + funcionario.getId() + "</th>");
                                     out.println("<td>" + funcionario.getNome()+ "</td>");
                                     out.println("<td>" + funcionario.getCpf()+ "</td>");
-                                    out.println("<td>" + funcionario.getSenha()+ "</td>");
                                     out.println("<td>" + funcionario.getPapel()+ "</td>");
                                     %>
                             <td>

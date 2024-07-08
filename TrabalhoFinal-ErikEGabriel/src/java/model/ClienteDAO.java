@@ -86,6 +86,7 @@ public class ClienteDAO implements Dao<Clientes> {
             sql.setString(7, t.getCep());
             sql.setString(8, t.getTelefone());
             sql.setString(9, t.getEmail());
+            sql.setInt(10, t.getId());
             sql.executeUpdate();
 
         } catch (SQLException e) {
