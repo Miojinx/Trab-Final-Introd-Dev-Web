@@ -10,12 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.ProdutosDAO;
-/**
- *
- * @author erikt
- */
-@WebServlet(name = "ProdutoController", urlPatterns = {"/comprador/ProdutoController"})
-public class ProdutoController extends HttpServlet {
+
+@WebServlet(name = "ProdutosController", urlPatterns = {"/comprador/ProdutosController"})
+public class ProdutosController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,7 +28,7 @@ public class ProdutoController extends HttpServlet {
                 ArrayList<Produtos> listaProdutos = produtoDAO.getAll();
                 request.setAttribute("listaProdutos", listaProdutos);
 
-                rd = request.getRequestDispatcher("/views/admin/produtos/listaProdutos.jsp");
+                rd = request.getRequestDispatcher("/views/produto/listaProdutos.jsp");
                 rd.forward(request, response);
 
                 break;
@@ -46,7 +43,7 @@ public class ProdutoController extends HttpServlet {
                 request.setAttribute("msgError", "");
                 request.setAttribute("acao", acao);
 
-                rd = request.getRequestDispatcher("/views/admin/produtos/formProduto.jsp");
+                rd = request.getRequestDispatcher("/views/produto/formProdutos.jsp");
                 rd.forward(request, response);
                 break;
             case "Incluir":
@@ -54,7 +51,7 @@ public class ProdutoController extends HttpServlet {
                 request.setAttribute("msgError", "");
                 request.setAttribute("acao", acao);
 
-                rd = request.getRequestDispatcher("/views/admin/produtos/formProduto.jsp");
+                rd = request.getRequestDispatcher("/views/produto/formProdutos.jsp");
                 rd.forward(request, response);
         }
 
@@ -78,7 +75,7 @@ public class ProdutoController extends HttpServlet {
         RequestDispatcher rd;
         
         
-        if (nome_produto.isEmpty() || descricao.isEmpty()) {
+        if (nome_produto.isEmpty() || descricao.isEmpty() || liberado_venda == '\u0000') {
             Produtos produto = new Produtos();
             switch (btEnviar) {
                 case "Alterar":
@@ -89,7 +86,7 @@ public class ProdutoController extends HttpServlet {
 
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
-                    throw new RuntimeException("Falha em uma query para cadastro de usuario");
+                    throw new RuntimeException("Falha em uma query para cadastro de produto");
                 }
                 break;
             }
@@ -99,7 +96,7 @@ public class ProdutoController extends HttpServlet {
 
             request.setAttribute("msgError", "É necessário preencher todos os campos");
 
-            rd = request.getRequestDispatcher("/views/admin/produto/formCategoria.jsp");
+            rd = request.getRequestDispatcher("/views/produto/formProdutos.jsp");
             rd.forward(request, response);
 
         } else {
@@ -123,13 +120,13 @@ public class ProdutoController extends HttpServlet {
                         break;
                 }
 
-                request.setAttribute("link", "/TrabalhoFinal-ErikEGabriel/admin/ProdutoController?acao=Listar");
+                request.setAttribute("link", "/TrabalhoFinal-ErikEGabriel/comprador/ProdutosController?acao=Listar");
                 rd = request.getRequestDispatcher("/views/comum/showMessage.jsp");
                 rd.forward(request, response);
 
             } catch (IOException | ServletException ex) {
                 System.out.println(ex.getMessage());
-                throw new RuntimeException("Falha em uma query para cadastro de usuario");
+                throw new RuntimeException("Falha em uma query para cadastro de produto");
             }
         }
     }

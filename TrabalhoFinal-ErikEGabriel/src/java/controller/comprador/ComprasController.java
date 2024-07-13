@@ -1,5 +1,6 @@
-package controller.admin;
-import Entidade.Funcionario;
+package controller.comprador;
+
+import Entidade.Compras;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -8,10 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.FuncionarioDAO;
+import model.ComprasDAO;
 
-@WebServlet(name = "FuncionarioController", urlPatterns = {"/admin/FuncionarioController"})
-public class FuncionarioController extends HttpServlet {
+@WebServlet(name = "ComprasController", urlPatterns = {"/comprador/ComprasController"})
+public class ComprasController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -19,108 +20,110 @@ public class FuncionarioController extends HttpServlet {
 
         // get parametro ação indicando o que fazer
         String acao = (String) request.getParameter("acao");
-        Funcionario funcionario = new Funcionario();
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        Compras compra = new Compras();
+        ComprasDAO compraDAO = new ComprasDAO();
         RequestDispatcher rd;
         switch (acao) {
             case "Listar":
-                ArrayList<Funcionario> listaFuncionarios = funcionarioDAO.getAll();
-                request.setAttribute("listaFuncionarios", listaFuncionarios);
+                ArrayList<Compras> listaCompras = compraDAO.getAll();
+                request.setAttribute("listaCompras", listaCompras);
 
-                rd = request.getRequestDispatcher("/views/funcionario/listaFuncionarios.jsp");
+                rd = request.getRequestDispatcher("/views/compra/listaCompras.jsp");
                 rd.forward(request, response);
 
                 break;
             case "Alterar":
             case "Excluir":
 
-                // get parametro ação indicando sobre qual categoria será a ação
                 int id = Integer.parseInt(request.getParameter("id"));
-                funcionario = funcionarioDAO.get(id);
+                compra = compraDAO.get(id);
 
-                request.setAttribute("funcionario", funcionario);
+                request.setAttribute("compra", compra);
                 request.setAttribute("msgError", "");
                 request.setAttribute("acao", acao);
 
-                rd = request.getRequestDispatcher("/views/funcionario/formFuncionarios.jsp");
+                rd = request.getRequestDispatcher("/views/compra/formCompras.jsp");
                 rd.forward(request, response);
                 break;
             case "Incluir":
-                request.setAttribute("funcionario", funcionario);
+                request.setAttribute("compra", compra);
                 request.setAttribute("msgError", "");
                 request.setAttribute("acao", acao);
 
-                rd = request.getRequestDispatcher("/views/funcionario/formFuncionarios.jsp");
+                rd = request.getRequestDispatcher("/views/compra/formCompras.jsp");
                 rd.forward(request, response);
         }
 
     }
-    
-@Override
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         int id = Integer.parseInt(request.getParameter("id"));
-        String nome = request.getParameter("nome");
-        String cpf = request.getParameter("cpf");
-        String senha = request.getParameter("senha");
-        char papel = request.getParameter("papel").charAt(0);
+        int quantidade_compra = Integer.parseInt(request.getParameter("quantidade_compra"));
+        String data_compra = request.getParameter("data_compra");
+        float valor_compra = Float.parseFloat(request.getParameter("valor_compra"));
+        int id_fornecedor = Integer.parseInt(request.getParameter("id_fornecedor"));
+        int id_produto = Integer.parseInt(request.getParameter("id_produto"));
+        int id_funcionario = Integer.parseInt(request.getParameter("id_funcionario"));
+                
         String btEnviar = request.getParameter("btEnviar");
 
         RequestDispatcher rd;
 
-        if (nome.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
-            Funcionario funcionario = new Funcionario();
+        if (data_compra == null) {
+            Compras compra = new Compras();
             switch (btEnviar) {
                 case "Alterar":
                 case "Excluir":
                     try {
-                    FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-                    funcionario = funcionarioDAO.get(id);
+                        ComprasDAO compraDAO = new ComprasDAO();
+                        compra = compraDAO.get(id);
 
-                } catch (Exception ex) {
-                    System.out.println(ex.getMessage());
-                    throw new RuntimeException("Falha em uma query para cadastro de funcionário");
-                }
-                break;
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                        throw new RuntimeException("Falha em uma query para cadastro de Compras");
+                    }
+                    break;
             }
 
-            request.setAttribute("funcionario", funcionario);
+            request.setAttribute("compra", compra);
             request.setAttribute("acao", btEnviar);
 
             request.setAttribute("msgError", "É necessário preencher todos os campos");
 
-            rd = request.getRequestDispatcher("/views/funcionario/formFuncionario.jsp");
+            rd = request.getRequestDispatcher("/views/compra/formCompras.jsp");
             rd.forward(request, response);
 
         } else {
-            
-             Funcionario funcionario = new Funcionario(id, nome, cpf, senha, papel);
-             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
+            Compras compra = new Compras(id, quantidade_compra, data_compra, valor_compra, id_fornecedor, id_funcionario, id_produto);
+            ComprasDAO compraDAO = new ComprasDAO();
 
             try {
                 switch (btEnviar) {
                     case "Incluir":
-                        funcionarioDAO.insert(funcionario);
+                        compraDAO.insert(compra);
                         request.setAttribute("msgOperacaoRealizada", "Inclusão realizada com sucesso");
                         break;
                     case "Alterar":
-                        funcionarioDAO.update(funcionario);
+                        compraDAO.update(compra);
                         request.setAttribute("msgOperacaoRealizada", "Alteração realizada com sucesso");
                         break;
                     case "Excluir":
-                        funcionarioDAO.delete(id);
+                        compraDAO.delete(id);
                         request.setAttribute("msgOperacaoRealizada", "Exclusão realizada com sucesso");
                         break;
                 }
 
-                request.setAttribute("link", "/TrabalhoFinal-ErikEGabriel/admin/FuncionarioController?acao=Listar");
+                request.setAttribute("link", "/TrabalhoFinal-ErikEGabriel/comprador/ComprasController?acao=Listar");
                 rd = request.getRequestDispatcher("/views/comum/showMessage.jsp");
                 rd.forward(request, response);
 
             } catch (IOException | ServletException ex) {
                 System.out.println(ex.getMessage());
-                throw new RuntimeException("Falha em uma query para cadastro de usuario");
+                throw new RuntimeException("Falha em uma query para cadastro de Compras");
             }
         }
     }

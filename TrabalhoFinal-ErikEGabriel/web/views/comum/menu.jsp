@@ -13,20 +13,22 @@
                     if (sessao != null) {
                         Funcionario funcionarioLogado = (Funcionario) session.getAttribute("funcionario");
                         if (funcionarioLogado != null && funcionarioLogado.getPapel() == '0') { %>      
-                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/dashboard">Dashboard</a>
-                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/FuncionarioController?acao=Listar">Funcionários</a>
-                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/logOut">Logout</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/dashboard">Dashboard</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/FuncionarioController?acao=Listar">Funcionários</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/logOut">Logout</a>
                 <% } else if (funcionarioLogado != null && funcionarioLogado.getPapel() == '1') { %>
-                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/vendedor/ClienteController?acao=Listar">Clientes</a>
-                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/vendedor/VendasController?acao=Listar">Vendas</a>
-                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/logOut">Logout</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/vendedor/ClienteController?acao=Listar">Clientes</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/vendedor/VendasController?acao=Listar">Vendas</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/logOut">Logout</a>
                 <% } else if (funcionarioLogado != null && funcionarioLogado.getPapel() == '2') { %>
-                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/comprador/CategoriaController?acao=Listar">Categorias</a>
-                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/comprador/ProdutoController?acao=Listar">Produtos</a>
-                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/logOut">Logout</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/comprador/ComprasController?acao=Listar">Compras</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/comprador/CategoriaController?acao=Listar">Categorias</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/comprador/FornecedoresController?acao=Listar">Fornecedores</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/comprador/ProdutosController?acao=Listar">Produtos</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/logOut">Logout</a>
                 <%  } else { %>
-                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/MostrarProdutos">Produtos</a>
-                            <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/AutenticaController?acao=Login">Login</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/MostrarProdutos">Produtos</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/AutenticaController?acao=Login">Login</a>
                 <%    }
                     }%>
             </div>

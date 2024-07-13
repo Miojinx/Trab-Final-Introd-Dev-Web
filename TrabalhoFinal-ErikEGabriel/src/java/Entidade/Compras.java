@@ -1,30 +1,27 @@
 package Entidade;
-import java.util.Date;
-/**
- *
- * @author User
- */
+
+
 public class Compras {
     private int id;
     private int quantidade_compra;
-    private Date data_compra;
+    private String data_compra;
     private float valor_compra;
     private int id_fornecedor;
     private int id_produto;
-    private int id_comprador;
+    private int id_funcionario;
 
     public Compras() {
         
     }
     
-    public Compras(int id, int quantidade_compra, Date data_compra, float valor_compra, int id_fornecedor, int id_produto, int id_comprador) {
+    public Compras(int id, int quantidade_compra, String data_compra, float valor_compra, int id_fornecedor, int id_produto, int id_funcionario) {
         this.id = id;
         this.quantidade_compra = quantidade_compra;
         this.data_compra = data_compra;
         this.valor_compra = valor_compra;
         this.id_fornecedor = id_fornecedor;
         this.id_produto = id_produto;
-        this.id_comprador = id_comprador;
+        this.id_funcionario = id_funcionario;
     }
 
     public int getId() {
@@ -43,11 +40,11 @@ public class Compras {
         this.quantidade_compra = quantidade_compra;
     }
 
-    public Date getData_compra() {
+    public String getData_compra() {
         return data_compra;
     }
 
-    public void setData_compra(Date data_compra) {
+    public void setData_compra(String data_compra) {
         this.data_compra = data_compra;
     }
 
@@ -75,12 +72,12 @@ public class Compras {
         this.id_produto = id_produto;
     }
 
-    public int getId_comprador() {
-        return id_comprador;
+    public int getId_funcionario() {
+        return id_funcionario;
     }
 
-    public void setId_comprador(int id_comprador) {
-        this.id_comprador = id_comprador;
+    public void setId_funcionario(int id_funcionario) {
+        this.id_funcionario = id_funcionario;
     }
     
     

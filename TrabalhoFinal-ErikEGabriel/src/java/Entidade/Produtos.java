@@ -11,7 +11,15 @@ public class Produtos {
     private char liberado_venda;
     private int id_categoria;
 
-    public Produtos(){}
+    public Produtos(){
+    this.id = 0;
+    this.nome_produto = "";
+    this.descricao = "";
+    this.preco_venda = 0;
+    this.quantidade_disponivel = 0;
+    this.liberado_venda = '\u0000';
+    this.id_categoria = 0;
+    }
     
     public Produtos(int id, String nome_produto, String descricao, float preco_compra, float preco_venda, int quantidade_disponivel, char liberado_venda, int id_categoria) {
         this.id = id;

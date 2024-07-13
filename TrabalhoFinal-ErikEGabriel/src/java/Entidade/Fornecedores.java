@@ -17,7 +17,16 @@ public class Fornecedores {
     private String email;
     
     public Fornecedores() {
-        
+        this.id = 0;
+        this.razao_social = "";
+        this.cnpj = "";
+        this.endereco = "";
+        this.bairro = "";
+        this.cidade = "";
+        this.uf = "";
+        this.cep = "";
+        this.telefone = "";
+        this.email = "";
     }
     
     public Fornecedores(int id, String razao_social, String cnpj, String endereco, String bairro, String cidade, String uf, String cep, String telefone, String email) {

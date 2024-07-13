@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import Entidade.Compras;
-import java.util.Date;
+import java.sql.Date;
 
 public class ComprasDAO implements Dao<Compras> {
 
@@ -21,12 +21,12 @@ public class ComprasDAO implements Dao<Compras> {
             if (resultado != null) {
                 while (resultado.next()) {
                     compras.setId(Integer.parseInt(resultado.getString("ID")));
-                    compras.setQuantidade_compra(resultado.getInt("QUANTIDADE_COMPRA_COMPRAS"));
-                    compras.setData_compra(resultado.getDate("DATA_COMPRA_COMPRAS"));
-                    compras.setValor_compra(resultado.getFloat("VALOR_COMPRA_COMPRAS"));
-                    compras.setId_fornecedor(resultado.getInt("ID_FORNECEDOR_COMPRAS"));
-                    compras.setId_produto(resultado.getInt("ID_PRODUTO_COMPRAS"));
-                    compras.setId_comprador(resultado.getInt("ID_COMPRADOR_COMPRAS"));
+                    compras.setQuantidade_compra(resultado.getInt("QUANTIDADE_COMPRA"));
+                    compras.setData_compra(resultado.getString("DATA_COMPRA"));
+                    compras.setValor_compra(resultado.getFloat("VALOR_COMPRA"));
+                    compras.setId_fornecedor(resultado.getInt("ID_FORNECEDOR"));
+                    compras.setId_produto(resultado.getInt("ID_PRODUTO"));
+                    compras.setId_funcionario(resultado.getInt("ID_FUNCIONARIO"));
                 }
             }
         } catch (SQLException e) {
@@ -42,13 +42,13 @@ public class ComprasDAO implements Dao<Compras> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Compras (quantidade_compra, data_compra, valor_compra, id_fornecedor,id_produto,id_comprador) VALUES (?,?,?,?,?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Compras (quantidade_compra, data_compra, valor_compra, id_fornecedor,id_produto,id_funcionario) VALUES (?,?,?,?,?,?)");
             sql.setInt(1, t.getQuantidade_compra());
-            sql.setDate(2, new java.sql.Date(t.getData_compra().getTime()));
+            sql.setDate(2, Date.valueOf(t.getData_compra()));
             sql.setFloat(3, t.getValor_compra());
             sql.setInt(4, t.getId_fornecedor());
             sql.setInt(5, t.getId_produto());
-            sql.setInt(6, t.getId_comprador());
+            sql.setInt(6, t.getId_funcionario());
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -62,13 +62,14 @@ public class ComprasDAO implements Dao<Compras> {
     public void update(Compras t) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Compras SET quantidade_compra = ?, data_compra = ?, valor_compra = ?, id_fornecedor = ?, id_produto = ?, id_comprador = ?  WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Compras SET quantidade_compra = ?, data_compra = ?, valor_compra = ?, id_fornecedor = ?, id_produto = ?, id_funcionario = ?  WHERE ID = ? ");
             sql.setInt(1, t.getQuantidade_compra());
-            sql.setDate(2, new java.sql.Date(t.getData_compra().getTime()));
+            sql.setDate(2, Date.valueOf(t.getData_compra()));
             sql.setFloat(3, t.getValor_compra());
             sql.setInt(4, t.getId_fornecedor());
             sql.setInt(5, t.getId_produto());
-            sql.setInt(6, t.getId_comprador());
+            sql.setInt(6, t.getId_funcionario());
+            sql.setInt(7, t.getId());
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -108,11 +109,11 @@ public class ComprasDAO implements Dao<Compras> {
                     Compras compras = new Compras(
                             resultado.getInt("ID"),
                             resultado.getInt("quantidade_compra"),
-                            resultado.getDate("data_compra"),
+                            resultado.getString("data_compra"),
                             resultado.getFloat("valor_compra"),
                             resultado.getInt("id_fornecedor"),
                             resultado.getInt("id_produto"),
-                            resultado.getInt("id_comprador")
+                            resultado.getInt("id_funcionario")
                     );
                     listaCompras.add(compras);
                 }

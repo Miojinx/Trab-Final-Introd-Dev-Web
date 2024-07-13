@@ -20,15 +20,15 @@ public class FornecedoresDAO implements Dao<Fornecedores> {
             if (resultado != null) {
                 while (resultado.next()) {
                     fornecedor.setId(Integer.parseInt(resultado.getString("ID")));
-                    fornecedor.setRazao_social(resultado.getString("RAZAO_SOCIAL_FORNECERDORES"));
-                    fornecedor.setCnpj(resultado.getString("CNPJ_FORNECERDORES"));
-                    fornecedor.setEndereco(resultado.getString("ENDERECO_FORNECERDORES"));
-                    fornecedor.setBairro(resultado.getString("BAIRRO_FORNECERDORES"));
-                    fornecedor.setCidade(resultado.getString("CIDADE_FORNECERDORES"));
-                    fornecedor.setUf(resultado.getString("UF_FORNECERDORES"));
-                    fornecedor.setCep(resultado.getString("CEP_FORNECERDORES"));
-                    fornecedor.setTelefone(resultado.getString("TELEFONE_FORNECERDORES"));
-                    fornecedor.setEmail(resultado.getString("EMAIL_FORNECERDORES"));
+                    fornecedor.setRazao_social(resultado.getString("RAZAO_SOCIAL"));
+                    fornecedor.setCnpj(resultado.getString("CNPJ"));
+                    fornecedor.setEndereco(resultado.getString("ENDERECO"));
+                    fornecedor.setBairro(resultado.getString("BAIRRO"));
+                    fornecedor.setCidade(resultado.getString("CIDADE"));
+                    fornecedor.setUf(resultado.getString("UF"));
+                    fornecedor.setCep(resultado.getString("CEP"));
+                    fornecedor.setTelefone(resultado.getString("TELEFONE"));
+                    fornecedor.setEmail(resultado.getString("EMAIL"));
                 }
             }
         } catch (SQLException e) {
@@ -38,13 +38,13 @@ public class FornecedoresDAO implements Dao<Fornecedores> {
         }
         return fornecedor;
     }
-    
+
     @Override
     public void insert(Fornecedores t) {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Fornecedores (razao_social, cnpj, endereco, bairro,cidade,uf,cep,telefone,email) VALUES (?,?,?,?,?,?,?,?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO fornecedores (razao_social, cnpj, endereco, bairro, cidade, uf, cep, telefone, email) VALUES (?,?,?,?, ?, ?, ?, ?, ?)");
             sql.setString(1, t.getRazao_social());
             sql.setString(2, t.getCnpj());
             sql.setString(3, t.getEndereco());
@@ -57,17 +57,17 @@ public class FornecedoresDAO implements Dao<Fornecedores> {
             sql.executeUpdate();
 
         } catch (SQLException e) {
-            System.err.println("Query de insert (Fornecedores) incorreta");
+            System.err.println("Query de insert (funcionario) incorreta");
         } finally {
             conexao.closeConexao();
         }
     }
-    
+
     @Override
     public void update(Fornecedores t) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Fornecedores SET razao_social = ?, cnpj = ?, endereco = ?, bairro = ?, cidade = ?, uf = ?, cep = ?, telefone = ?, email = ?  WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Fornecedores SET razao_social = ?, cnpj = ?, endereco = ?, bairro = ?, cidade = ?, uf = ?, cep = ?, telefone = ?, email = ?  WHERE ID = ?");
             sql.setString(1, t.getRazao_social());
             sql.setString(2, t.getCnpj());
             sql.setString(3, t.getEndereco());
@@ -77,6 +77,7 @@ public class FornecedoresDAO implements Dao<Fornecedores> {
             sql.setString(7, t.getCep());
             sql.setString(8, t.getTelefone());
             sql.setString(9, t.getEmail());
+            sql.setInt(10, t.getId());
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -85,7 +86,7 @@ public class FornecedoresDAO implements Dao<Fornecedores> {
             conexao.closeConexao();
         }
     }
-    
+
     @Override
     public void delete(int id) {
         Conexao conexao = new Conexao();
@@ -100,7 +101,7 @@ public class FornecedoresDAO implements Dao<Fornecedores> {
             conexao.closeConexao();
         }
     }
-    
+
     @Override
     public ArrayList<Fornecedores> getAll() {
 

@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import Entidade.Vendas;
-import java.util.Date;
+import java.sql.Date;
 
 public class VendasDAO implements Dao<Vendas> {
 
@@ -21,12 +21,12 @@ public class VendasDAO implements Dao<Vendas> {
             if (resultado != null) {
                 while (resultado.next()) {
                     vendas.setId(Integer.parseInt(resultado.getString("ID")));
-                    vendas.setQuantidade_venda(resultado.getInt("QUANTIDADE_VENDA_VENDAS"));
-                    vendas.setData_venda(resultado.getDate("DATA_VENDA_VENDAS"));
-                    vendas.setValor_venda(resultado.getFloat("VALOR_VENDA_VENDAS"));
-                    vendas.setId_cliente(resultado.getInt("ID_CLIENTE_VENDAS"));
-                    vendas.setId_produto(resultado.getInt("ID_PRODUTO_VENDAS"));
-                    vendas.setId_vendedor(resultado.getInt("ID_VENDEDOR_VENDAS"));
+                    vendas.setQuantidade_venda(resultado.getInt("QUANTIDADE_VENDA"));
+                    vendas.setData_venda(resultado.getString("DATA_VENDA"));
+                    vendas.setValor_venda(resultado.getFloat("VALOR_VENDA"));
+                    vendas.setId_cliente(resultado.getInt("ID_CLIENTE"));
+                    vendas.setId_produto(resultado.getInt("ID_PRODUTO"));
+                    vendas.setId_funcionario(resultado.getInt("id_funcionario"));
                 }
             }
         } catch (SQLException e) {
@@ -42,13 +42,13 @@ public class VendasDAO implements Dao<Vendas> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Vendas (quantidade_venda, data_venda, valor_venda, id_cliente,id_produto,id_vendedor) VALUES (?,?,?,?,?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Vendas (quantidade_venda, data_venda, valor_venda, id_cliente,id_produto,id_funcionario) VALUES (?,?,?,?,?,?)");
             sql.setInt(1, t.getQuantidade_venda());
-            sql.setDate(2, new java.sql.Date(t.getData_venda().getTime()));
+            sql.setDate(2, Date.valueOf(t.getData_venda()));
             sql.setFloat(3, t.getValor_venda());
             sql.setInt(4, t.getId_cliente());
             sql.setInt(5, t.getId_produto());
-            sql.setInt(6, t.getId_vendedor());
+            sql.setInt(6, t.getId_funcionario());
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -62,13 +62,14 @@ public class VendasDAO implements Dao<Vendas> {
     public void update(Vendas t) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Vendas SET quantidade_venda = ?, data_venda = ?, valor_venda = ?, id_cliente = ?, id_produto = ?, id_vendedor = ?  WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Vendas SET quantidade_venda = ?, data_venda = ?, valor_venda = ?, id_cliente = ?, id_produto = ?, id_funcionario = ?  WHERE ID = ? ");
             sql.setInt(1, t.getQuantidade_venda());
-            sql.setDate(2, new java.sql.Date(t.getData_venda().getTime()));
+            sql.setDate(2, Date.valueOf(t.getData_venda()));
             sql.setFloat(3, t.getValor_venda());
             sql.setInt(4, t.getId_cliente());
             sql.setInt(5, t.getId_produto());
-            sql.setInt(6, t.getId_vendedor());
+            sql.setInt(6, t.getId_funcionario());
+            sql.setInt(7, t.getId());
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -99,7 +100,7 @@ public class VendasDAO implements Dao<Vendas> {
         ArrayList<Vendas> listaVendas = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM Vendas";
+            String selectSQL = "SELECT * FROM vendas";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
@@ -108,11 +109,11 @@ public class VendasDAO implements Dao<Vendas> {
                     Vendas venda = new Vendas(
                             resultado.getInt("ID"),
                             resultado.getInt("quantidade_venda"),
-                            resultado.getDate("data_venda"),
+                            resultado.getString("data_venda"),
                             resultado.getFloat("valor_venda"),
                             resultado.getInt("id_cliente"),
                             resultado.getInt("id_produto"),
-                            resultado.getInt("id_vendedor")
+                            resultado.getInt("id_funcionario")
                     );
                     listaVendas.add(venda);
                 }
