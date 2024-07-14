@@ -116,7 +116,7 @@ public class ProdutosDAO implements Dao<Produtos> {
         ArrayList<Produtos> listaProdutos = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * from estoque.produtos";
+            String selectSQL = "SELECT * from produtos";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
@@ -142,7 +142,7 @@ public class ProdutosDAO implements Dao<Produtos> {
         }
         return listaProdutos;
     }
-
+    
     public ArrayList<Produtos> getAllQuantMaior0() {
     ArrayList<Produtos> listaProdutos = new ArrayList<>();
     Conexao conexao = new Conexao();

@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,21 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.ProdutosDAO;
-import Entidade.Produtos;
+import model.VendasDAO;
+import Entidade.VendasTotais;
+import Entidade.Vendas;
 
-
-@WebServlet(name = "MostrarProdutos", urlPatterns = {"/MostrarProdutos"})
-public class MostrarProdutosController extends HttpServlet {
+@WebServlet(name = "DashboardVendas", urlPatterns = {"/admin/DashboardVendas"})
+public class DashboardVendasController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                   ProdutosDAO produtosDAO = new ProdutosDAO();
+                   VendasDAO vendaDAO = new VendasDAO();
             try {
-                ArrayList<Produtos> listaProdutos = produtosDAO.getAllQuantMaior0();
-                request.setAttribute("listaProdutos", listaProdutos);
-                RequestDispatcher rd = request.getRequestDispatcher("/views/public/mostrarProdutos.jsp");
+                ArrayList<VendasTotais> listaVendasTotais = vendaDAO.getVendasTotais();
+                request.setAttribute("listaVendasTotais", listaVendasTotais);
+                RequestDispatcher rd = request.getRequestDispatcher("/views/dashboard2/dashTotalVendas.jsp");
                 rd.forward(request, response);
                 
                 

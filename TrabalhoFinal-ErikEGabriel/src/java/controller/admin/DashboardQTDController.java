@@ -1,4 +1,4 @@
-package controller;
+package controller.admin;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,27 +8,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.ComentarioDAO;
-import entidade.Comentario;
+import model.ProdutosDAO;
+import Entidade.Produtos;
 
-
-@WebServlet(name = "MostrarComentarios", urlPatterns = {"/MostrarComentarios"})
-public class MostrarComentarios extends HttpServlet {
+@WebServlet(name = "DashboardQTD", urlPatterns = {"/admin/DashboardQTD"})
+public class DashboardQTDController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                   ComentarioDAO comentarioDAO = new ComentarioDAO();
+                   ProdutosDAO produtosDAO = new ProdutosDAO();
             try {
-                ArrayList<Comentario> listaComentarios = comentarioDAO.getAll();
-                request.setAttribute("listaComentarios", listaComentarios);
-                RequestDispatcher rd = request.getRequestDispatcher("/views/public/comentarios.jsp");
+                ArrayList<Produtos> listaProdutos = produtosDAO.getAll();
+                request.setAttribute("listaProdutos", listaProdutos);
+                RequestDispatcher rd = request.getRequestDispatcher("/views/public/mostrarProdutos.jsp");
                 rd.forward(request, response);
                 
                 
             } catch (IOException | ServletException ex) {
                 System.out.println(ex.getMessage());
-                throw new RuntimeException("Falha na query listar usuarios (mostrarComentarios) ");
+                throw new RuntimeException("Falha na query listar usuarios (mostrarProdutos) ");
             }
     }
 

@@ -18,7 +18,7 @@
              <jsp:include page="../comum/menu.jsp" />
             <div class="mt-5">
 
-                <h2>Lista de Clientes</h2>
+                <h2>Lista de Vendas</h2>
 
                 <a href="/TrabalhoFinal-ErikEGabriel/vendedor/VendasController?acao=Incluir" class="mb-2 btn btn-primary">Incluir</a>
                 <div class="table-responsive">

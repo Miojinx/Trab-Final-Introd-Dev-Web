@@ -75,7 +75,7 @@ public class ProdutosController extends HttpServlet {
         RequestDispatcher rd;
         
         
-        if (nome_produto.isEmpty() || descricao.isEmpty() || liberado_venda == '\u0000') {
+        if (nome_produto.isEmpty() || descricao.isEmpty() || liberado_venda == '\u0000' || quantidade_disponivel < 0 || id_categoria < 0 || preco_compra < 0 || preco_venda < 0) {
             Produtos produto = new Produtos();
             switch (btEnviar) {
                 case "Alterar":

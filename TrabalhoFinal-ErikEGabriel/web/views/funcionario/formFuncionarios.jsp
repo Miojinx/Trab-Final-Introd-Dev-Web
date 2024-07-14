@@ -46,11 +46,11 @@
                         <input type="hidden" name="id" value="<%=funcionario.getId()%>" class="form-control">
                         <div class="mb-3">
                             <label for="nome" class="form-label" >Nome</label>
-                            <input type="text" name="nome" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=funcionario.getNome()%>" class="form-control">
+                            <input type="text" name="nome" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=funcionario.getNome()%>" required class="form-control">
                             <label for="cpf" class="form-label" >CPF</label>
-                            <input type="text" name="cpf" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=funcionario.getCpf()%>" class="form-control">
+                            <input type="text" name="cpf" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=funcionario.getCpf()%>" required class="form-control">
                             <label for="senha" class="form-label" >Senha</label>
-                            <input type="text" name="senha" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=funcionario.getSenha()%>" class="form-control">
+                            <input type="text" name="senha" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=funcionario.getSenha()%>" required class="form-control">
                             <label for="papel" class="form-label" >Papel</label>
                             <select class="form-select" id="papel" name="papel" required value="<%=funcionario.getPapel()%>" <%= acao.equals("Excluir") ? "Readonly" : ""%>>
                                 <option value="0">admin</option>

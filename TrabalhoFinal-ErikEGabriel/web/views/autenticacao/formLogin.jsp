@@ -26,11 +26,11 @@
                 <form action="/TrabalhoFinal-ErikEGabriel/AutenticaController?acao=login" method="POST">
                     <div class="mb-3">
                         <label for="cpf" class="form-label">CPF</label>
-                        <input type="text" name="cpf" value="167.740.300-41" class="form-control">
+                        <input type="text" name="cpf" value="249.252.810-38" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="senha" class="form-label">Senha</label>
-                        <input type="password" name="senha" value="111" class="form-control">
+                        <input type="password" name="senha" value="111" class="form-control" required>
                     </div>
                     <div class="row">
                         <div class="col-sm-2">

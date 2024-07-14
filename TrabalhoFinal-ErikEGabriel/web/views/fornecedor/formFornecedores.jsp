@@ -46,31 +46,31 @@
                         <input type="hidden" name="id" value="<%=fornecedor.getId()%>" class="form-control">
                         <div class="mb-3">
                             <label for="razao_social" class="form-label" >Razão Social</label>
-                            <input type="text" name="razao_social" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getRazao_social()%>" class="form-control">
+                            <input type="text" name="razao_social" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getRazao_social()%>" required class="form-control">
                             
                             <label for="cnpj" class="form-label" >CNPJ</label>
-                            <input type="text" name="cnpj" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getCnpj()%>" class="form-control">
+                            <input type="text" name="cnpj" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getCnpj()%>" required class="form-control">
 
                             <label for="endereco" class="form-label" >Endereco</label>
-                            <input type="text" name="endereco" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getEndereco()%>" class="form-control">
+                            <input type="text" name="endereco" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getEndereco()%>" required class="form-control">
 
                             <label for="bairro" class="form-label" >Bairro</label>
-                            <input type="text" name="bairro" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getBairro()%>" class="form-control">
+                            <input type="text" name="bairro" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getBairro()%>" required class="form-control">
                             
                             <label for="cidade" class="form-label" >Cidade</label>
-                            <input type="text" name="cidade" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getCidade()%>" class="form-control">
+                            <input type="text" name="cidade" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getCidade()%>" required class="form-control">
                             
                             <label for="uf" class="form-label" >UF</label>
-                            <input type="text" name="uf" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getUf()%>" class="form-control">
+                            <input type="text" name="uf" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getUf()%>" required class="form-control">
                             
                             <label for="cep" class="form-label" >CEP</label>
-                            <input type="text" name="cep" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getCep()%>" class="form-control">
+                            <input type="text" name="cep" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getCep()%>" required class="form-control">
                             
                             <label for="telefone" class="form-label" >Telefone</label>
-                            <input type="text" name="telefone" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getTelefone()%>" class="form-control">
+                            <input type="text" name="telefone" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getTelefone()%>" required class="form-control">
                             
                             <label for="email" class="form-label" >Email</label>
-                            <input type="text" name="email" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getEmail()%>" class="form-control">
+                            <input type="text" name="email" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=fornecedor.getEmail()%>" required class="form-control">
                         </div>
                         <div>
                             <input type="submit" name="btEnviar" value="<%=acao%>" class="btn btn-primary">

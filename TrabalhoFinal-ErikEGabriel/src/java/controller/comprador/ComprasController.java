@@ -72,7 +72,7 @@ public class ComprasController extends HttpServlet {
 
         RequestDispatcher rd;
 
-        if (data_compra == null) {
+        if (data_compra == null || quantidade_compra < 0 || valor_compra < 0 || id_fornecedor < 0 || id_produto < 0 || id_funcionario < 0) {
             Compras compra = new Compras();
             switch (btEnviar) {
                 case "Alterar":

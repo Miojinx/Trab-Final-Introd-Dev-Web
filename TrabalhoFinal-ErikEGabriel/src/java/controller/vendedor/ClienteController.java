@@ -123,7 +123,7 @@ public class ClienteController extends HttpServlet {
                 }
 
                 request.setAttribute("link", "/TrabalhoFinal-ErikEGabriel/vendedor/ClienteController?acao=Listar");
-                rd = request.getRequestDispatcher("/views/comum/showMessage.jsp"); //lembrar de alterar mais tarde
+                rd = request.getRequestDispatcher("/views/comum/showMessage.jsp");
                 rd.forward(request, response);
 
             } catch (IOException | ServletException ex) {

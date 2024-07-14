@@ -46,7 +46,7 @@
                         <input type="hidden" name="id" value="<%=categoria.getId()%>" class="form-control">
                         <div class="mb-3">
                             <label for="nomeCategoria" class="form-label" >Nome da Categoria</label>
-                            <input type="text" name="nomeCategoria" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=categoria.getNome_categoria()%>" class="form-control">
+                            <input type="text" name="nomeCategoria" <%= acao.equals("Excluir") ? "Readonly" : ""%> value="<%=categoria.getNome_categoria()%>" class="form-control" required>
                         </div>
                         <div>
                             <input type="submit" name="btEnviar" value="<%=acao%>" class="btn btn-primary">

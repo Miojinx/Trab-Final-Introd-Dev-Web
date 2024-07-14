@@ -13,7 +13,8 @@
                     if (sessao != null) {
                         Funcionario funcionarioLogado = (Funcionario) session.getAttribute("funcionario");
                         if (funcionarioLogado != null && funcionarioLogado.getPapel() == '0') { %>      
-                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/dashboard">Dashboard</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/DashboardQTD">DashboardQTD</a>
+                <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/DashboardVendas">DashboardVendas</a>
                 <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/FuncionarioController?acao=Listar">Funcionários</a>
                 <a class="nav-link" href="/TrabalhoFinal-ErikEGabriel/admin/logOut">Logout</a>
                 <% } else if (funcionarioLogado != null && funcionarioLogado.getPapel() == '1') { %>

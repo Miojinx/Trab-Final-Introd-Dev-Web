@@ -71,7 +71,7 @@ public class VendasController extends HttpServlet {
 
         RequestDispatcher rd;
 
-        if (data_venda == null) {
+        if (data_venda == null || quantidade_venda < 0 || valor_venda < 0 || id_cliente < 0 || id_funcionario < 0 || id_produto < 0) {
             Vendas venda = new Vendas();
             switch (btEnviar) {
                 case "Alterar":
