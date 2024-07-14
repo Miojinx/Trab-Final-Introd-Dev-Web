@@ -142,5 +142,33 @@ public class ProdutosDAO implements Dao<Produtos> {
         }
         return listaProdutos;
     }
+
+    public ArrayList<Produtos> getAllQuantMaior0() {
+    ArrayList<Produtos> listaProdutos = new ArrayList<>();
+    Conexao conexao = new Conexao();
+    try {
+        String selectSQL = "SELECT * FROM estoque.produtos WHERE QUANTIDADE_DISPONÍVEL > 0";
+        PreparedStatement preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+        ResultSet resultado = preparedStatement.executeQuery();
+        while (resultado != null && resultado.next()) {
+            Produtos produto = new Produtos(
+                    resultado.getInt("ID"),
+                    resultado.getString("NOME_PRODUTO"),
+                    resultado.getString("DESCRICAO"),
+                    resultado.getFloat("PRECO_COMPRA"),
+                    resultado.getFloat("PRECO_VENDA"),
+                    resultado.getInt("QUANTIDADE_DISPONÍVEL"),
+                    resultado.getString("LIBERADO_VENDA").charAt(0),
+                    resultado.getInt("ID_CATEGORIA")
+            );
+            listaProdutos.add(produto);
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException("Query de select (listaProdutos) incorreta", e);
+    } finally {
+        conexao.closeConexao();
+    }
+    return listaProdutos;
+}
     
 }
